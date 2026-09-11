@@ -246,6 +246,61 @@ h1 {
   font-size: 0.9rem;
 }
 
+.status-pill[data-status="PENDING"],
+.status-pill[data-status="PROCESSING"] {
+  background: #eef3f8;
+  color: #2f5575;
+}
+
+.status-pill[data-status="COMPLETED"] {
+  background: color-mix(in srgb, var(--brand) 12%, white);
+  color: var(--brand);
+}
+
+.status-pill[data-status="REJECTED"],
+.status-pill[data-status="FAILED"] {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.status-banner {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.status-banner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.status-banner[data-status="FAILED"],
+.status-banner[data-status="REJECTED"] {
+  border-color: color-mix(in srgb, var(--danger) 25%, white);
+  background: var(--danger-bg);
+}
+
+.status-banner[data-status="FAILED"] p,
+.status-banner[data-status="REJECTED"] p {
+  color: var(--danger);
+}
+
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-indicator {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
 .note {
   margin: 0;
 }
