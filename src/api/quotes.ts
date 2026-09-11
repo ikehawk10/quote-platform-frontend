@@ -177,10 +177,13 @@ export async function createQuote(
   throwFromErrorBody(response, body, "create");
 }
 
-export async function getQuote(id: string): Promise<Quote> {
-  const { response, body } = await requestJson(`/quotes/${encodeURIComponent(id)}`, {
-    method: "GET",
-  });
+export async function getQuoteById(quoteId: string): Promise<Quote> {
+  const { response, body } = await requestJson(
+    `/quotes/${encodeURIComponent(quoteId)}`,
+    {
+      method: "GET",
+    },
+  );
 
   if (response.status === 200) {
     const data = body as Partial<Quote> | null;

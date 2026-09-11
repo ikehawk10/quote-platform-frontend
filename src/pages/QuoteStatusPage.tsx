@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getQuote, QuotesApiError, type Quote } from "../api/quotes";
+import { getQuoteById, QuotesApiError, type Quote } from "../api/quotes";
 import { useQuoteStore } from "../store/quoteStore";
 
 type PageState =
@@ -82,7 +82,7 @@ export function QuoteStatusPage() {
       setPageState({ kind: "loading" });
 
       try {
-        const quote = await getQuote(quoteId!);
+        const quote = await getQuoteById(quoteId!);
         if (cancelled) {
           return;
         }
@@ -173,7 +173,7 @@ export function QuoteStatusPage() {
                   return;
                 }
                 setPageState({ kind: "loading" });
-                void getQuote(quoteId)
+                void getQuoteById(quoteId)
                   .then((quote) => {
                     setQuote(quote.id, quote.status);
                     setPageState({ kind: "ready", quote });
